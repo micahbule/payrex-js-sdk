@@ -1,33 +1,19 @@
+import QueryString from "qs";
 import HttpClient from "../http";
 import { CreatePaymentIntentPayload } from "../types";
 
 export default class PaymentIntentService {
-  private baseUrl = "/payment_intents";
+  private basePath = "/payment_intents";
 
   constructor(private readonly client: HttpClient) {}
 
-  create(params: CreatePaymentIntentPayload) {
-    const formData = new FormData();
-    const paramKeys = Object.keys(params) as Array<
-      keyof CreatePaymentIntentPayload
-    >;
+  async create(params: CreatePaymentIntentPayload) {
+    const response = await this.client.send(
+      "post",
+      this.basePath,
+      QueryString.stringify(params, { arrayFormat: "brackets" })
+    );
 
-    paramKeys.forEach((key) => {
-      let value = params[key];
-
-      switch (key) {
-        case "amount":
-          value = value?.toString();
-        case "metadata":
-          value = JSON.stringify(value);
-      }
-
-      formData.append(key, value as string);
-    });
-
-    this.client.send({
-      url: this.baseUrl,
-      method: "POST",
-    });
+    return response.body;
   }
 }

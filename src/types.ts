@@ -10,7 +10,7 @@ export enum PI_CaptureType {
 
 export type CreatePaymentIntentPayload = {
   amount: number;
-  payment_methods: PI_PaymentMethods;
+  payment_methods: PI_PaymentMethods[];
   currency: string;
   capture_type?: PI_CaptureType;
   description?: string;
