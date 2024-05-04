@@ -2,7 +2,7 @@
   "name": "payrex-js-sdk",
   "version": "1.0.0",
   "description": "A PayRex SDK written for NodeJS",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "test",
     "build": "tsup src --dts"
