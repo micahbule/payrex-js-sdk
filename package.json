@@ -1,0 +1,27 @@
+{
+  "name": "payrex-js-sdk",
+  "version": "1.0.0",
+  "description": "A PayRex SDK written for NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micahbule/payrex-js-sdk.git"
+  },
+  "keywords": [
+    "payments",
+    "payrex"
+  ],
+  "author": "Micah Andrew Bule",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/micahbule/payrex-js-sdk/issues"
+  },
+  "homepage": "https://github.com/micahbule/payrex-js-sdk#readme",
+  "devDependencies": {
+    "@types/node": "^20.12.8",
+    "typescript": "^5.4.5"
+  }
+}
