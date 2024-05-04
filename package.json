@@ -4,7 +4,8 @@
   "description": "A PayRex SDK written for NodeJS",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "tsup src"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "@types/node": "^20.12.8",
     "@types/qs": "^6.9.15",
     "ts-node": "^10.9.2",
+    "tsup": "^8.0.2",
     "typescript": "^5.4.5"
   },
   "dependencies": {
