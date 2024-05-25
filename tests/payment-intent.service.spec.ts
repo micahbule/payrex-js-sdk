@@ -29,7 +29,7 @@ describe("payment intent service", () => {
     const response = await service.create({
       amount: 10000,
       currency: "PHP",
-      payment_methods: [PI_PaymentMethods.GCASH],
+      payment_methods: ["card"],
     });
 
     assert.deepEqual(response, new PaymentIntentDto(paymentIntentFixture.body));
