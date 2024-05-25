@@ -16,3 +16,9 @@ export type CreatePaymentIntentPayload = {
   description?: string;
   metadata?: Record<string, string>;
 };
+
+export type PayrexApiError = {
+  code: string;
+  detail: string;
+  parameter: string;
+};
