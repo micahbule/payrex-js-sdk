@@ -204,10 +204,51 @@ var PaymentIntentService = class {
   }
 };
 
+// src/refund/service.ts
+var import_qs2 = __toESM(require("qs"), 1);
+
+// src/refund/dto.ts
+var RefundDto = class {
+  constructor(apiResponse) {
+    this.id = apiResponse.id;
+    this.resource = apiResponse.resource;
+    this.amount = apiResponse.amount;
+    this.status = apiResponse.status;
+    this.currency = apiResponse.currency;
+    this.description = apiResponse.description;
+    this.reason = apiResponse.reason;
+    this.remarks = apiResponse.remarks;
+    this.livemode = apiResponse.livemode;
+    this.metadata = apiResponse.metadata;
+    this.payment_id = apiResponse.payment_id;
+    this.created_at = apiResponse.created_at;
+    this.updated_at = apiResponse.updated_at;
+  }
+};
+
+// src/refund/service.ts
+var RefundService = class {
+  constructor(client) {
+    this.client = client;
+    this.basePath = "/refunds";
+  }
+  create(params) {
+    return __async(this, null, function* () {
+      const response = yield this.client.send(
+        "post",
+        this.basePath,
+        import_qs2.default.stringify(params, { arrayFormat: "brackets" })
+      );
+      return new RefundDto(response.body);
+    });
+  }
+};
+
 // src/index.ts
 var PayRexClient = class {
   constructor(secretApiKey) {
     const httpClient = new HttpClient(secretApiKey);
     this.paymentIntent = new PaymentIntentService(httpClient);
+    this.refund = new RefundService(httpClient);
   }
 };
