@@ -1,21 +1,15 @@
-type PaymentIntentNextAction = {
-  type: string;
-  redirect_url: string;
-};
-
-export default class PaymentIntentDto {
+export default class RefundDto {
   id: string;
   resource: string;
   amount: number;
-  capture_type: string;
-  client_secret: string;
+  status: string;
   currency: string;
   description: string;
+  reason: string;
+  remarks: string;
   livemode: string;
   metadata: Record<string, string> | null;
-  next_action: PaymentIntentNextAction;
-  payment_methods: string[];
-  status: string;
+  payment_id: string;
   created_at: number;
   updated_at: number;
 
@@ -23,15 +17,14 @@ export default class PaymentIntentDto {
     this.id = apiResponse.id;
     this.resource = apiResponse.resource;
     this.amount = apiResponse.amount;
-    this.capture_type = apiResponse.capture_type;
-    this.client_secret = apiResponse.client_secret;
+    this.status = apiResponse.status;
     this.currency = apiResponse.currency;
     this.description = apiResponse.description;
+    this.reason = apiResponse.reason;
+    this.remarks = apiResponse.remarks;
     this.livemode = apiResponse.livemode;
     this.metadata = apiResponse.metadata;
-    this.next_action = apiResponse.next_action;
-    this.payment_methods = apiResponse.payment_methods;
-    this.status = apiResponse.status;
+    this.payment_id = apiResponse.payment_id;
     this.created_at = apiResponse.created_at;
     this.updated_at = apiResponse.updated_at;
   }

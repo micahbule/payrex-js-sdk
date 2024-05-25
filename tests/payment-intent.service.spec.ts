@@ -2,9 +2,9 @@ import assert from "assert";
 import sinon, { SinonStub } from "sinon";
 import PaymentIntentService from "../src/payment-intent/service.js";
 import HttpClient from "../src/http.js";
-import { PI_PaymentMethods } from "../src/types.js";
+import { PI_PaymentMethods } from "../src/payment-intent/types.js";
 import PaymentIntentDto from "../src/payment-intent/dto.js";
-import paymentIntentFixture from "./fixtures/payment-intent.js";
+import paymentIntentFixture from "./fixtures/payment-intent.fixture.js";
 
 describe("payment intent service", () => {
   let service: PaymentIntentService;
