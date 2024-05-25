@@ -61,63 +61,86 @@ var __async = (__this, __arguments, generator) => {
   });
 };
 
-// src/index.ts
-var src_exports = {};
-__export(src_exports, {
-  default: () => PayRexClient
+// src/http.ts
+var http_exports = {};
+__export(http_exports, {
+  default: () => HttpClient
 });
-module.exports = __toCommonJS(src_exports);
+module.exports = __toCommonJS(http_exports);
+var import_needle = __toESM(require("needle"), 1);
+
+// src/constants.ts
+var BASE_API_URL = "https://api.payrexhq.com";
+
+// src/errors/resource-not-found.ts
+var ResourceNotFoundError = class _ResourceNotFoundError extends Error {
+  constructor() {
+    super();
+    this.name = _ResourceNotFoundError.name;
+  }
+};
+
+// src/errors/invalid-auth.ts
+var InvalidAuthError = class _InvalidAuthError extends Error {
+  constructor() {
+    super();
+    this.name = _InvalidAuthError.name;
+  }
+};
+
+// src/errors/invalid-request.ts
+var InvalidRequestError = class _InvalidRequestError extends Error {
+  constructor() {
+    super();
+    this.name = _InvalidRequestError.name;
+  }
+};
 
 // src/http.ts
-var import_needle = __toESM(require("needle"));
 var HttpClient = class {
   constructor(apiKey) {
-    this.baseApiUrl = "https://api.payrexhq.com";
     this.encodedApiKey = Buffer.from(`${apiKey}:`).toString("base64");
   }
+  processError({ statusCode }) {
+    if (statusCode === 400) {
+      throw new InvalidRequestError();
+    }
+    if (statusCode === 401) {
+      throw new InvalidAuthError();
+    }
+    if (statusCode === 404) {
+      throw new ResourceNotFoundError();
+    }
+    throw new Error(`The server responded with a ${statusCode} status code`);
+  }
   send(method, url, data, opts) {
-    const needleArgs = [method, `${this.baseApiUrl}${url}`];
-    const needleOpts = {
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Authorization: `Basic ${this.encodedApiKey}`
-      }
-    };
-    if (data) {
-      needleArgs.push(data);
-    }
-    if (!opts) {
-      needleArgs.push(needleOpts);
-    } else {
-      needleArgs.push(__spreadValues(__spreadValues({}, needleOpts), opts));
-    }
-    return (0, import_needle.default)(...needleArgs);
-  }
-};
-
-// src/services/payment-intent.ts
-var import_qs = __toESM(require("qs"));
-var PaymentIntentService = class {
-  constructor(client) {
-    this.client = client;
-    this.basePath = "/payment_intents";
-  }
-  create(params) {
     return __async(this, null, function* () {
-      const response = yield this.client.send(
-        "post",
-        this.basePath,
-        import_qs.default.stringify(params, { arrayFormat: "brackets" })
-      );
-      return response.body;
+      const needleArgs = [
+        method,
+        `${BASE_API_URL}${url}`,
+        ""
+      ];
+      const defaultNeedleOpts = {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: `Basic ${this.encodedApiKey}`
+        }
+      };
+      if (data) {
+        needleArgs.splice(2, 1);
+        needleArgs.push(data);
+      }
+      if (!opts) {
+        needleArgs.push(defaultNeedleOpts);
+      } else {
+        needleArgs.push(__spreadValues(__spreadValues({}, defaultNeedleOpts), opts));
+      }
+      const response = yield (0, import_needle.default)(...needleArgs);
+      const { statusCode } = response;
+      if (statusCode && statusCode >= 400) {
+        this.processError(response);
+      }
+      return response;
     });
-  }
-};
-
-// src/index.ts
-var PayRexClient = class {
-  constructor(secretApiKey) {
-    const httpClient = new HttpClient(secretApiKey);
-    this.paymentIntent = new PaymentIntentService(httpClient);
   }
 };

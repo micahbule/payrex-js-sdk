@@ -1,7 +1,8 @@
-import PaymentIntentService from './services/payment-intent.js';
-import './http.js';
+import PaymentIntentService from './payment-intent/service.cjs';
+import './http.cjs';
 import 'needle';
-import './types.js';
+import './payment-intent/types.cjs';
+import './payment-intent/dto.cjs';
 
 declare class PayRexClient {
     paymentIntent: PaymentIntentService;

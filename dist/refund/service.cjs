@@ -47,17 +47,38 @@ var __async = (__this, __arguments, generator) => {
   });
 };
 
-// src/services/payment-intent.ts
-var payment_intent_exports = {};
-__export(payment_intent_exports, {
-  default: () => PaymentIntentService
+// src/refund/service.ts
+var service_exports = {};
+__export(service_exports, {
+  default: () => RefundService
 });
-module.exports = __toCommonJS(payment_intent_exports);
-var import_qs = __toESM(require("qs"));
-var PaymentIntentService = class {
+module.exports = __toCommonJS(service_exports);
+var import_qs = __toESM(require("qs"), 1);
+
+// src/refund/dto.ts
+var RefundDto = class {
+  constructor(apiResponse) {
+    this.id = apiResponse.id;
+    this.resource = apiResponse.resource;
+    this.amount = apiResponse.amount;
+    this.status = apiResponse.status;
+    this.currency = apiResponse.currency;
+    this.description = apiResponse.description;
+    this.reason = apiResponse.reason;
+    this.remarks = apiResponse.remarks;
+    this.livemode = apiResponse.livemode;
+    this.metadata = apiResponse.metadata;
+    this.payment_id = apiResponse.payment_id;
+    this.created_at = apiResponse.created_at;
+    this.updated_at = apiResponse.updated_at;
+  }
+};
+
+// src/refund/service.ts
+var RefundService = class {
   constructor(client) {
     this.client = client;
-    this.basePath = "/payment_intents";
+    this.basePath = "/refunds";
   }
   create(params) {
     return __async(this, null, function* () {
@@ -66,7 +87,7 @@ var PaymentIntentService = class {
         this.basePath,
         import_qs.default.stringify(params, { arrayFormat: "brackets" })
       );
-      return response.body;
+      return new RefundDto(response.body);
     });
   }
 };

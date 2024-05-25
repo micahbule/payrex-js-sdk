@@ -17,25 +17,14 @@ var __copyProps = (to, from, except, desc) => {
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// src/types.ts
-var types_exports = {};
-__export(types_exports, {
-  PI_CaptureType: () => PI_CaptureType,
-  PI_PaymentMethods: () => PI_PaymentMethods
+// src/constants.ts
+var constants_exports = {};
+__export(constants_exports, {
+  BASE_API_URL: () => BASE_API_URL
 });
-module.exports = __toCommonJS(types_exports);
-var PI_PaymentMethods = /* @__PURE__ */ ((PI_PaymentMethods2) => {
-  PI_PaymentMethods2["CARD"] = "card";
-  PI_PaymentMethods2["GCASH"] = "gcash";
-  return PI_PaymentMethods2;
-})(PI_PaymentMethods || {});
-var PI_CaptureType = /* @__PURE__ */ ((PI_CaptureType2) => {
-  PI_CaptureType2["AUTOMATIC"] = "automatic";
-  PI_CaptureType2["CAPTURE"] = "capture";
-  return PI_CaptureType2;
-})(PI_CaptureType || {});
+module.exports = __toCommonJS(constants_exports);
+var BASE_API_URL = "https://api.payrexhq.com";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  PI_CaptureType,
-  PI_PaymentMethods
+  BASE_API_URL
 });
