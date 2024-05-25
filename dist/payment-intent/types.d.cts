@@ -6,9 +6,10 @@ declare enum PI_CaptureType {
     AUTOMATIC = "automatic",
     CAPTURE = "capture"
 }
+type AvailablePaymentMethods = `${PI_PaymentMethods}`[];
 type CreatePaymentIntentPayload = {
     amount: number;
-    payment_methods: PI_PaymentMethods[];
+    payment_methods: AvailablePaymentMethods;
     currency: string;
     capture_type?: PI_CaptureType;
     description?: string;
