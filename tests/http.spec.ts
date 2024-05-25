@@ -1,10 +1,10 @@
 import assert from "assert";
 import nock from "nock";
-import { BASE_API_URL } from "./constants.js";
-import HttpClient from "./http.js";
-import InvalidAuthError from "./errors/invalid-auth.js";
-import ResourceNotFoundError from "./errors/resource-not-found.js";
-import InvalidRequestError from "./errors/invalid-request.js";
+import { BASE_API_URL } from "../src/constants.js";
+import HttpClient from "../src/http.js";
+import InvalidAuthError from "../src/errors/invalid-auth.js";
+import ResourceNotFoundError from "../src/errors/resource-not-found.js";
+import InvalidRequestError from "../src/errors/invalid-request.js";
 
 const server = nock(BASE_API_URL);
 

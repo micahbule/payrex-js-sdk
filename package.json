@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "test": "ts-mocha tests",
+    "test": "ts-mocha",
+    "test:spec": "ts-mocha -- --grep",
     "build": "tsup src --dts"
   },
   "repository": {
@@ -28,6 +29,7 @@
     "@types/qs": "^6.9.15",
     "mocha": "^10.4.0",
     "nock": "^13.5.4",
+    "sinon": "^18.0.0",
     "ts-mocha": "^10.0.0",
     "ts-node": "^10.9.2",
     "tsup": "^8.0.2",
@@ -35,6 +37,7 @@
   },
   "dependencies": {
     "@types/needle": "^3.3.0",
+    "@types/sinon": "^17.0.3",
     "needle": "^3.3.1",
     "qs": "^6.12.1"
   }

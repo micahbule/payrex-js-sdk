@@ -1,5 +1,5 @@
 import HttpClient from "./http";
-import PaymentIntentService from "./services/payment-intent";
+import PaymentIntentService from "./payment-intent/service";
 
 export default class PayRexClient {
   paymentIntent: PaymentIntentService;
