@@ -3,7 +3,7 @@
   "version": "1.1.1",
   "description": "A PayRex SDK written for NodeJS",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/index.d.cts",
   "type": "module",
   "scripts": {
     "test": "ts-mocha",
