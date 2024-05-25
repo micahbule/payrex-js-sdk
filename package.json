@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "A PayRex SDK written for NodeJS",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
-    "test": "test",
+    "test": "ts-mocha tests",
     "build": "tsup src --dts"
   },
   "repository": {
@@ -22,8 +23,12 @@
   },
   "homepage": "https://github.com/micahbule/payrex-js-sdk#readme",
   "devDependencies": {
+    "@types/mocha": "^10.0.6",
     "@types/node": "^20.12.8",
     "@types/qs": "^6.9.15",
+    "mocha": "^10.4.0",
+    "nock": "^13.5.4",
+    "ts-mocha": "^10.0.0",
     "ts-node": "^10.9.2",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5"
