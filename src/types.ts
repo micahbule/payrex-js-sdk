@@ -3,3 +3,7 @@ export type PayrexApiError = {
   detail: string;
   parameter: string;
 };
+
+export interface BaseService {
+  basePath: string;
+}
