@@ -10,3 +10,7 @@ export type CreateWebhookPayload = {
   events: WebhookEventStrings[];
   description?: string;
 };
+
+export type UpdateWebhookPayload = Partial<CreateWebhookPayload> & {
+  id: string;
+};
