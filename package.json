@@ -5,6 +5,9 @@
   "main": "dist/index.cjs",
   "types": "dist/index.d.cts",
   "type": "module",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "test": "ts-mocha",
     "test:spec": "ts-mocha -- --grep",
