@@ -19,6 +19,18 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
+var __objRest = (source, exclude) => {
+  var target = {};
+  for (var prop in source)
+    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
+      target[prop] = source[prop];
+  if (source != null && __getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(source)) {
+      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
+        target[prop] = source[prop];
+    }
+  return target;
+};
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
@@ -244,11 +256,91 @@ var RefundService = class {
   }
 };
 
+// src/webhooks/service.ts
+var import_qs3 = __toESM(require("qs"), 1);
+
+// src/webhooks/dto.ts
+var WebhookDto = class {
+  constructor(apiResponse) {
+    this.id = apiResponse.id;
+    this.resource = apiResponse.resource;
+    this.secret_key = apiResponse.secret_key;
+    this.status = apiResponse.status;
+    this.description = apiResponse.description;
+    this.livemode = apiResponse.livemode;
+    this.url = apiResponse.url;
+    this.events = apiResponse.events;
+    this.created_at = apiResponse.created_at;
+    this.updated_at = apiResponse.updated_at;
+  }
+};
+
+// src/webhooks/service.ts
+var WebhookService = class {
+  constructor(client) {
+    this.client = client;
+    this.basePath = "/webhooks";
+    this.disable = this.toggle("disable");
+    this.enable = this.toggle("enable");
+  }
+  create(params) {
+    return __async(this, null, function* () {
+      const response = yield this.client.send(
+        "post",
+        this.basePath,
+        import_qs3.default.stringify(params, { arrayFormat: "brackets" })
+      );
+      return new WebhookDto(response.body);
+    });
+  }
+  get(id) {
+    return __async(this, null, function* () {
+      let finalUrl = this.basePath;
+      if (id) {
+        finalUrl = `${this.basePath}/${id}`;
+      }
+      const response = yield this.client.send("get", finalUrl);
+      if (id) {
+        return new WebhookDto(response.body);
+      } else {
+        return response.body.data.map((webhook) => new WebhookDto(webhook));
+      }
+    });
+  }
+  update(params) {
+    return __async(this, null, function* () {
+      const _a = params, { id } = _a, payload = __objRest(_a, ["id"]);
+      const response = yield this.client.send(
+        "put",
+        `${this.basePath}/${id}`,
+        payload
+      );
+      return new WebhookDto(response.body);
+    });
+  }
+  delete(id) {
+    return __async(this, null, function* () {
+      const response = yield this.client.send("delete", `${this.basePath}/${id}`);
+      return new WebhookDto(response.body);
+    });
+  }
+  toggle(type) {
+    return (id) => __async(this, null, function* () {
+      const response = yield this.client.send(
+        "post",
+        `${this.basePath}/${id}/${type}`
+      );
+      return new WebhookDto(response.body);
+    });
+  }
+};
+
 // src/index.ts
 var PayRexClient = class {
   constructor(secretApiKey) {
     const httpClient = new HttpClient(secretApiKey);
     this.paymentIntent = new PaymentIntentService(httpClient);
     this.refund = new RefundService(httpClient);
+    this.webhook = new WebhookService(httpClient);
   }
 };
