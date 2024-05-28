@@ -2,9 +2,10 @@ import QueryString from "qs";
 import HttpClient from "../http.js";
 import { CreateRefundPayload } from "./types.js";
 import RefundDto from "./dto.js";
+import { BaseService } from "../types.js";
 
-export default class RefundService {
-  private basePath = "/refunds";
+export default class RefundService implements BaseService {
+  basePath = "/refunds";
 
   constructor(private readonly client: HttpClient) {}
 
