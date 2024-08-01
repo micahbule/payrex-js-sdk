@@ -3,7 +3,8 @@ const PaymentIntentFixture = {
     id: "pi_SJuGtXXC3XNRWpW3W1zQKiLWf67ZC4sX",
     resource: "payment_intent",
     amount: 10000,
-    capture_type: "automatic",
+    amount_received: 0,
+    amount_capturable: 0,
     client_secret:
       "pi_SJuGtXXC3XNRWpW3W1zQKiLWf67ZC4sX_secret_7KGizzHuLtPtaLwiRMHekBHRUo6yv52r",
     currency: "PHP",
@@ -13,6 +14,11 @@ const PaymentIntentFixture = {
     next_action: {
       type: "redirect",
       redirect_url: "https://my-application/redirect",
+    },
+    payment_method_options: {
+      card: {
+        capture_type: "automatic",
+      },
     },
     payment_methods: ["card", "gcash"],
     status: "awaiting_payment_method",

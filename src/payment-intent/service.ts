@@ -13,7 +13,7 @@ export default class PaymentIntentService implements BaseService {
     const response = await this.client.send(
       "post",
       this.basePath,
-      QueryString.stringify(params, { arrayFormat: "brackets" })
+      QueryString.stringify(params, { arrayFormat: "brackets" }),
     );
 
     return new PaymentIntentDto(response.body);
@@ -29,7 +29,7 @@ export default class PaymentIntentService implements BaseService {
     const response = await this.client.send(
       "post",
       `${this.basePath}/${id}/capture`,
-      { amount }
+      QueryString.stringify({ amount }, { arrayFormat: "brackets" }),
     );
 
     return new PaymentIntentDto(response.body);
