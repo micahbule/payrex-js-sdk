@@ -9,8 +9,8 @@
     "dist/**/*"
   ],
   "scripts": {
-    "test": "ts-mocha",
-    "test:spec": "ts-mocha -- --grep",
+    "test": "mocha --require ts-node/register",
+    "test:spec": "mocha --require ts-node/register -- --grep",
     "build": "tsup src --dts"
   },
   "repository": {
@@ -34,7 +34,6 @@
     "mocha": "^10.4.0",
     "nock": "^13.5.4",
     "sinon": "^18.0.0",
-    "ts-mocha": "^10.0.0",
     "ts-node": "^10.9.2",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5"
