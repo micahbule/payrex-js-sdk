@@ -9,5 +9,6 @@ export type CreatePaymentIntentPayload = {
   currency: string;
   description?: string;
   payment_method_options?: PayrexPaymentMethodOptions;
+  statement_descriptor?: string;
   metadata?: Record<string, string>;
 };

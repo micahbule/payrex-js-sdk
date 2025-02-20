@@ -14,11 +14,12 @@ export default class PaymentIntentDto {
   client_secret: string;
   currency: string;
   description: string;
-  livemode: string;
+  livemode: boolean;
   metadata: Record<string, string> | null;
   next_action: PaymentIntentNextAction;
   payment_method_options: PayrexPaymentMethodOptions;
   payment_methods: AvailablePaymentMethods;
+  statement_descriptor: string;
   status: string;
   created_at: number;
   updated_at: number;
@@ -37,6 +38,7 @@ export default class PaymentIntentDto {
     this.next_action = apiResponse.next_action;
     this.payment_methods = apiResponse.payment_methods;
     this.payment_method_options = apiResponse.payment_method_options;
+    this.statement_descriptor = apiResponse.statement_descriptor;
     this.status = apiResponse.status;
     this.created_at = apiResponse.created_at;
     this.updated_at = apiResponse.updated_at;

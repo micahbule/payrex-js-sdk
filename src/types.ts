@@ -11,6 +11,8 @@ export interface BaseService {
 export enum PayrexPaymentMethods {
   CARD = "card",
   GCASH = "gcash",
+  MAYA = "maya",
+  QRPH = "qrph",
 }
 
 export enum PayrexCardCaptureTypes {
@@ -30,4 +32,10 @@ export type PayrexCardPaymentOptions = {
   };
 };
 
-export type PayrexPaymentMethodOptions = {};
+export type PayrexPaymentMethodOptions = {
+  card: {
+    capture_type: PayrexCardCaptureTypes,
+    allowed_bins?: string[],
+    allowed_funding?: string[],
+  }
+};
