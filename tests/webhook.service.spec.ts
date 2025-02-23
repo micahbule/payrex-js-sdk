@@ -1,9 +1,9 @@
 import assert from "node:assert";
 import sinon, { type SinonStub } from "sinon";
 import HttpClient from "../src/http.js";
+import WebhookDto from "../src/webhooks/dto.js";
 import WebhookService from "../src/webhooks/service.js";
 import webhookFixture from "./fixtures/webhook.fixture.js";
-import WebhookDto from "../src/webhooks/dto.js";
 
 describe("refund service", () => {
 	let service: WebhookService;

@@ -1,9 +1,9 @@
 import assert from "node:assert";
 import sinon, { type SinonStub } from "sinon";
 import HttpClient from "../src/http.js";
+import RefundDto from "../src/refund/dto.js";
 import RefundService from "../src/refund/service.js";
 import refundFixture from "./fixtures/refund.fixture.js";
-import RefundDto from "../src/refund/dto.js";
 
 describe("refund service", () => {
 	let service: RefundService;
