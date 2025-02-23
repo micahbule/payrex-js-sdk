@@ -1,5 +1,5 @@
-import sinon, { SinonStub } from "sinon";
-import assert from "assert";
+import assert from "node:assert";
+import sinon, { type SinonStub } from "sinon";
 import HttpClient from "../src/http.js";
 import WebhookService from "../src/webhooks/service.js";
 import webhookFixture from "./fixtures/webhook.fixture.js";

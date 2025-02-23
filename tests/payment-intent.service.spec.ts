@@ -1,5 +1,5 @@
-import assert from "assert";
-import sinon, { SinonStub } from "sinon";
+import assert from "node:assert";
+import sinon, { type SinonStub } from "sinon";
 import PaymentIntentService from "../src/payment-intent/service.js";
 import HttpClient from "../src/http.js";
 import PaymentIntentDto from "../src/payment-intent/dto.js";

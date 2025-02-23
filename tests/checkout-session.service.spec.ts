@@ -1,8 +1,8 @@
-import sinon, { SinonStub } from "sinon";
+import sinon, { type SinonStub } from "sinon";
 import CheckoutSessionService from "../src/checkout-session/service.js";
 import HttpClient from "../src/http.js";
 import checkoutSessionFixture from "./fixtures/checkout-session.fixture.js";
-import assert from "assert";
+import assert from "node:assert";
 import CheckoutSessionDto from "../src/checkout-session/dto.js";
 
 describe("checkout session service", () => {

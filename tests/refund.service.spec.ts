@@ -1,5 +1,5 @@
-import assert from "assert";
-import sinon, { SinonStub } from "sinon";
+import assert from "node:assert";
+import sinon, { type SinonStub } from "sinon";
 import HttpClient from "../src/http.js";
 import RefundService from "../src/refund/service.js";
 import refundFixture from "./fixtures/refund.fixture.js";

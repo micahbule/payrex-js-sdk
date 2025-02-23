@@ -9,7 +9,7 @@ const PaymentIntentFixture = {
 			"pi_SJuGtXXC3XNRWpW3W1zQKiLWf67ZC4sX_secret_7KGizzHuLtPtaLwiRMHekBHRUo6yv52r",
 		currency: "PHP",
 		description: "",
-		livemode: "test",
+		livemode: false,
 		metadata: null,
 		next_action: {
 			type: "redirect",
@@ -21,6 +21,7 @@ const PaymentIntentFixture = {
 			},
 		},
 		payment_methods: ["card", "gcash"],
+		statement_descriptor: null,
 		status: "awaiting_payment_method",
 		created_at: 1700407880,
 		updated_at: 1700407880,

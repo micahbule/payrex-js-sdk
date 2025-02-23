@@ -27,7 +27,7 @@ export type AvailablePaymentMethods = `${PayrexPaymentMethods}`[];
 
 export type PayrexPaymentMethodOptions = {
 	card: {
-		capture_type: PayrexCardCaptureTypes;
+		capture_type: `${PayrexCardCaptureTypes}` | string;
 		allowed_bins?: string[];
 		allowed_funding?: string[];
 	};

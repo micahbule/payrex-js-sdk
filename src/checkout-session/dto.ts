@@ -1,13 +1,8 @@
 import type {
-	CheckoutSessionLineItem,
 	CheckoutSessionResource,
+	CheckoutSessionLineItemResource,
 } from "./types.js";
 import PaymentIntentDto from "../payment-intent/dto.js";
-
-type CheckoutSessionLineItemDto = CheckoutSessionLineItem & {
-	id: string;
-	resource: string;
-};
 
 export default class CheckoutSessionDto {
 	id: string;
@@ -16,7 +11,7 @@ export default class CheckoutSessionDto {
 	client_secret: string;
 	status: string;
 	currency: string;
-	line_items: CheckoutSessionLineItemDto[];
+	line_items: CheckoutSessionLineItemResource[];
 	livemode: boolean;
 	url: string;
 	payment_intent: PaymentIntentDto;
@@ -24,7 +19,7 @@ export default class CheckoutSessionDto {
 	success_url: string;
 	cancel_url: string;
 	payment_methods: string[];
-	description: string;
+	description: string | null;
 	submit_type: string;
 	expires_at: number;
 	created_at: number;

@@ -26,9 +26,13 @@ export type CreateCheckoutSessionPayload = {
 	metadata?: Record<string, string>;
 };
 
-type CheckoutSessionLineItemResource = CheckoutSessionLineItem & {
+export type CheckoutSessionLineItemResource = Required<
+	Omit<CheckoutSessionLineItem, "description" | "image">
+> & {
 	id: string;
 	resource: string;
+	description: string | null;
+	image: string | null;
 };
 
 export type CheckoutSessionResource = {
@@ -42,11 +46,11 @@ export type CheckoutSessionResource = {
 	livemode: boolean;
 	url: string;
 	payment_intent: PaymentIntentResource;
-	metadata: Record<string, string>;
+	metadata: Record<string, string> | null;
 	success_url: string;
 	cancel_url: string;
-	payment_methods: AvailablePaymentMethods;
-	description: string;
+	payment_methods: AvailablePaymentMethods | string[];
+	description: string | null;
 	submit_type: string;
 	expires_at: number;
 	created_at: number;

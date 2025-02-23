@@ -31,7 +31,10 @@ const CheckoutSessionFixture = {
 		url: "https://checkout.payrexhq.com/c/cs_AbvnRnF9r577BBFFuNsLFvXvLes1CeeS_secret_tttefYgf9BgAnuiq9bN8EuwrpUShZU4E",
 		payment_intent: {
 			id: "pi_UDQ5s2yLAeE4h1CJsP9Mm6RYYk7MMnsb",
+			resource: "payment_intent",
 			amount: 100000,
+			amount_received: 0,
+			amount_capturable: 0,
 			capture_type: null,
 			client_secret:
 				"pi_UDQ5s2yLAeE4h1CJsP9Mm6RYYk7MMnsb_secret_azBhHvfc17JJUDs8yi94KpMbtv56eQ5D",
@@ -48,6 +51,7 @@ const CheckoutSessionFixture = {
 				},
 			},
 			status: "awaiting_payment_method",
+			statement_descriptor: null,
 			return_url: null,
 			capture_before_at: null,
 			created_at: 1721726975,

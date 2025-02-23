@@ -2,12 +2,7 @@ import type {
 	AvailablePaymentMethods,
 	PayrexPaymentMethodOptions,
 } from "../types";
-import type { PaymentIntentResource } from "./types";
-
-type PaymentIntentNextAction = {
-	type: string;
-	redirect_url: string;
-};
+import type { PaymentIntentResource, PayrexNextAction } from "./types";
 
 export default class PaymentIntentDto {
 	id: string;
@@ -20,9 +15,9 @@ export default class PaymentIntentDto {
 	description: string;
 	livemode: boolean;
 	metadata: Record<string, string> | null;
-	next_action: PaymentIntentNextAction;
+	next_action: PayrexNextAction | null;
 	payment_method_options: PayrexPaymentMethodOptions;
-	payment_methods: AvailablePaymentMethods;
+	payment_methods: AvailablePaymentMethods | string[];
 	statement_descriptor: string | null;
 	status: string;
 	created_at: number;

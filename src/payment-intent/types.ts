@@ -3,7 +3,7 @@ import type {
 	PayrexPaymentMethodOptions,
 } from "../types.js";
 
-type PayrexNextAction = {
+export type PayrexNextAction = {
 	type: string;
 	redirect_url: string;
 };
@@ -29,9 +29,9 @@ export type PaymentIntentResource = {
 	description: string;
 	livemode: boolean;
 	metadata: Record<string, string> | null;
-	next_action: PayrexNextAction;
+	next_action: PayrexNextAction | null;
 	payment_method_options: PayrexPaymentMethodOptions;
-	payment_methods: AvailablePaymentMethods;
+	payment_methods: AvailablePaymentMethods | string[];
 	statement_descriptor: string | null;
 	status: string;
 	created_at: number;

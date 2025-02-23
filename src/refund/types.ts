@@ -18,7 +18,7 @@ export type RefundResource = {
 	reason: string;
 	remarks: string;
 	livemode: boolean;
-	metadata: Record<string, string>;
+	metadata: Record<string, string> | null;
 	payment_id: string;
 	created_at: number;
 	updated_at: number;

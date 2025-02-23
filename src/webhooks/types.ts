@@ -23,7 +23,7 @@ export type WebhookResource = {
 	description: string;
 	livemode: boolean;
 	url: string;
-	events: WebhookEventStrings[];
+	events: WebhookEventStrings[] | string[];
 	created_at: number;
 	updated_at: number;
 };
