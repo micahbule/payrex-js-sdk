@@ -1,8 +1,8 @@
 import QueryString from "qs";
 import type HttpClient from "../http.js";
-import type { CreateRefundPayload } from "./types.js";
-import RefundDto from "./dto.js";
 import type { BaseService } from "../types.js";
+import RefundDto from "./dto.js";
+import type { CreateRefundPayload } from "./types.js";
 
 export default class RefundService implements BaseService {
 	basePath = "/refunds";

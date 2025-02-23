@@ -1,8 +1,8 @@
 import QueryString from "qs";
 import type HttpClient from "../http.js";
-import type { CreatePaymentIntentPayload } from "./types.js";
-import PaymentIntentDto from "./dto.js";
 import type { BaseService } from "../types.js";
+import PaymentIntentDto from "./dto.js";
+import type { CreatePaymentIntentPayload } from "./types.js";
 
 export default class PaymentIntentService implements BaseService {
 	basePath = "/payment_intents";

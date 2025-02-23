@@ -1,12 +1,12 @@
 import QueryString from "qs";
 import type HttpClient from "../http.js";
 import type { BaseService } from "../types.js";
+import WebhookDto from "./dto.js";
 import type {
 	CreateWebhookPayload,
 	UpdateWebhookPayload,
 	WebhookResource,
 } from "./types.js";
-import WebhookDto from "./dto.js";
 
 type WebhookToggle = "enable" | "disable";
 

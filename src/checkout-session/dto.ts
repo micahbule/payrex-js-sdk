@@ -1,8 +1,8 @@
-import type {
-	CheckoutSessionResource,
-	CheckoutSessionLineItemResource,
-} from "./types.js";
 import PaymentIntentDto from "../payment-intent/dto.js";
+import type {
+	CheckoutSessionLineItemResource,
+	CheckoutSessionResource,
+} from "./types.js";
 
 export default class CheckoutSessionDto {
 	id: string;

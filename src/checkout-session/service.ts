@@ -1,8 +1,8 @@
-import type { BaseService } from "../types.js";
-import type HttpClient from "../http.js";
-import type { CreateCheckoutSessionPayload } from "./types.js";
 import QueryString from "qs";
+import type HttpClient from "../http.js";
+import type { BaseService } from "../types.js";
 import CheckoutSessionDto from "./dto.js";
+import type { CreateCheckoutSessionPayload } from "./types.js";
 
 export default class CheckoutSessionService implements BaseService {
 	basePath = "/checkout_sessions";

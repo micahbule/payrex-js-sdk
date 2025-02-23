@@ -5,9 +5,9 @@ import needle, {
 	type NeedleResponse,
 } from "needle";
 import { BASE_API_URL } from "./constants.js";
-import ResourceNotFoundError from "./errors/resource-not-found.js";
 import InvalidAuthError from "./errors/invalid-auth.js";
 import InvalidRequestError from "./errors/invalid-request.js";
+import ResourceNotFoundError from "./errors/resource-not-found.js";
 
 export default class HttpClient {
 	private encodedApiKey: string;
