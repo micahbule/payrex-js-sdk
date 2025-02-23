@@ -14,3 +14,16 @@ export type CreateWebhookPayload = {
 export type UpdateWebhookPayload = Partial<CreateWebhookPayload> & {
 	id: string;
 };
+
+export type WebhookResource = {
+	id: string;
+	resource: string;
+	secret_key: string;
+	status: string;
+	description: string;
+	livemode: boolean;
+	url: string;
+	events: WebhookEventStrings[];
+	created_at: number;
+	updated_at: number;
+};

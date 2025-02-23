@@ -1,3 +1,5 @@
+import type { WebhookResource } from "./types";
+
 export default class WebhookDto {
 	id: string;
 	resource: string;
@@ -10,7 +12,7 @@ export default class WebhookDto {
 	created_at: number;
 	updated_at: number;
 
-	constructor(apiResponse: any) {
+	constructor(apiResponse: WebhookResource) {
 		this.id = apiResponse.id;
 		this.resource = apiResponse.resource;
 		this.secret_key = apiResponse.secret_key;

@@ -1,8 +1,8 @@
 import needle, {
-	BodyData,
-	NeedleHttpVerbs,
-	NeedleOptions,
-	NeedleResponse,
+	type BodyData,
+	type NeedleHttpVerbs,
+	type NeedleOptions,
+	type NeedleResponse,
 } from "needle";
 import { BASE_API_URL } from "./constants.js";
 import ResourceNotFoundError from "./errors/resource-not-found.js";

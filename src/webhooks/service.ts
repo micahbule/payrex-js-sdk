@@ -1,7 +1,11 @@
 import QueryString from "qs";
-import HttpClient from "../http.js";
-import { BaseService } from "../types.js";
-import { CreateWebhookPayload, UpdateWebhookPayload } from "./types.js";
+import type HttpClient from "../http.js";
+import type { BaseService } from "../types.js";
+import type {
+	CreateWebhookPayload,
+	UpdateWebhookPayload,
+	WebhookResource,
+} from "./types.js";
 import WebhookDto from "./dto.js";
 
 type WebhookToggle = "enable" | "disable";
@@ -32,9 +36,11 @@ export default class WebhookService implements BaseService {
 
 		if (id) {
 			return new WebhookDto(response.body);
-		} else {
-			return response.body.data.map((webhook: any) => new WebhookDto(webhook));
 		}
+
+		return response.body.data.map(
+			(webhook: WebhookResource) => new WebhookDto(webhook),
+		);
 	}
 
 	async update(params: UpdateWebhookPayload) {

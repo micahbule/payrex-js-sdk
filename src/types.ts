@@ -25,13 +25,6 @@ export type PI_CaptureType = PayrexCardCaptureTypes;
 
 export type AvailablePaymentMethods = `${PayrexPaymentMethods}`[];
 
-export type PayrexCardPaymentOptions = {
-	card: {
-		capture_type: PayrexCardCaptureTypes;
-		allowed_bins?: number[];
-	};
-};
-
 export type PayrexPaymentMethodOptions = {
 	card: {
 		capture_type: PayrexCardCaptureTypes;

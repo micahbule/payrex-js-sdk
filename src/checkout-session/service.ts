@@ -1,6 +1,6 @@
-import { BaseService } from "../types.js";
-import HttpClient from "../http.js";
-import { CreateCheckoutSessionPayload } from "./types.js";
+import type { BaseService } from "../types.js";
+import type HttpClient from "../http.js";
+import type { CreateCheckoutSessionPayload } from "./types.js";
 import QueryString from "qs";
 import CheckoutSessionDto from "./dto.js";
 

@@ -1,3 +1,5 @@
+import type { RefundResource } from "./types";
+
 export default class RefundDto {
 	id: string;
 	resource: string;
@@ -7,13 +9,13 @@ export default class RefundDto {
 	description: string;
 	reason: string;
 	remarks: string;
-	livemode: string;
+	livemode: boolean;
 	metadata: Record<string, string> | null;
 	payment_id: string;
 	created_at: number;
 	updated_at: number;
 
-	constructor(apiResponse: any) {
+	constructor(apiResponse: RefundResource) {
 		this.id = apiResponse.id;
 		this.resource = apiResponse.resource;
 		this.amount = apiResponse.amount;

@@ -1,4 +1,7 @@
-import { CheckoutSessionLineItem } from "./types.js";
+import type {
+	CheckoutSessionLineItem,
+	CheckoutSessionResource,
+} from "./types.js";
 import PaymentIntentDto from "../payment-intent/dto.js";
 
 type CheckoutSessionLineItemDto = CheckoutSessionLineItem & {
@@ -9,7 +12,7 @@ type CheckoutSessionLineItemDto = CheckoutSessionLineItem & {
 export default class CheckoutSessionDto {
 	id: string;
 	resource: string;
-	customer_reference_id: string;
+	customer_reference_id: string | null;
 	client_secret: string;
 	status: string;
 	currency: string;
@@ -27,7 +30,7 @@ export default class CheckoutSessionDto {
 	created_at: number;
 	updated_at: number;
 
-	constructor(apiResponse: any) {
+	constructor(apiResponse: CheckoutSessionResource) {
 		this.id = apiResponse.id;
 		this.resource = apiResponse.resource;
 		this.customer_reference_id = apiResponse.customer_reference_id;

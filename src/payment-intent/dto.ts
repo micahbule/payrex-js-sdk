@@ -1,4 +1,8 @@
-import { AvailablePaymentMethods, PayrexPaymentMethodOptions } from "../types";
+import type {
+	AvailablePaymentMethods,
+	PayrexPaymentMethodOptions,
+} from "../types";
+import type { PaymentIntentResource } from "./types";
 
 type PaymentIntentNextAction = {
 	type: string;
@@ -19,12 +23,12 @@ export default class PaymentIntentDto {
 	next_action: PaymentIntentNextAction;
 	payment_method_options: PayrexPaymentMethodOptions;
 	payment_methods: AvailablePaymentMethods;
-	statement_descriptor: string;
+	statement_descriptor: string | null;
 	status: string;
 	created_at: number;
 	updated_at: number;
 
-	constructor(apiResponse: any) {
+	constructor(apiResponse: PaymentIntentResource) {
 		this.id = apiResponse.id;
 		this.resource = apiResponse.resource;
 		this.amount = apiResponse.amount;

@@ -1,4 +1,5 @@
-import {
+import type { PaymentIntentResource } from "../payment-intent/types.js";
+import type {
 	AvailablePaymentMethods,
 	PayrexPaymentMethodOptions,
 } from "../types.js";
@@ -23,4 +24,31 @@ export type CreateCheckoutSessionPayload = {
 	payment_method_options?: PayrexPaymentMethodOptions;
 	expires_at?: number;
 	metadata?: Record<string, string>;
+};
+
+type CheckoutSessionLineItemResource = CheckoutSessionLineItem & {
+	id: string;
+	resource: string;
+};
+
+export type CheckoutSessionResource = {
+	id: string;
+	resource: string;
+	customer_reference_id: string | null;
+	client_secret: string;
+	status: string;
+	currency: string;
+	line_items: CheckoutSessionLineItemResource[];
+	livemode: boolean;
+	url: string;
+	payment_intent: PaymentIntentResource;
+	metadata: Record<string, string>;
+	success_url: string;
+	cancel_url: string;
+	payment_methods: AvailablePaymentMethods;
+	description: string;
+	submit_type: string;
+	expires_at: number;
+	created_at: number;
+	updated_at: number;
 };
