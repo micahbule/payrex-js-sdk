@@ -1,12 +1,12 @@
-import type HttpClient from "../http";
-import type { BaseService } from "../types";
-import { formatRequestPayload } from "../utils";
-import CustomerDto from "./dto";
+import type HttpClient from "../http.js";
+import type { BaseService } from "../types.js";
+import { formatRequestPayload } from "../utils.js";
+import CustomerDto from "./dto.js";
 import type {
 	CreateCustomerPayload,
 	CustomerResource,
 	UpdateCustomerPayload,
-} from "./types";
+} from "./types.js";
 
 export default class CustomerService implements BaseService {
 	basePath = "/customers";

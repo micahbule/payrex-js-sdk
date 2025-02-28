@@ -1,6 +1,6 @@
 import type { CustomerResource } from "./types";
 
-export default class Customer {
+export default class CustomerDto {
 	id: string;
 	resource: string;
 	billing_statement_prefix: string;
