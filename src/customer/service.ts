@@ -5,6 +5,7 @@ import CustomerDto from "./dto.js";
 import type {
 	CreateCustomerPayload,
 	CustomerResource,
+	CustomerSearchParams,
 	UpdateCustomerPayload,
 } from "./types.js";
 
@@ -33,7 +34,26 @@ export default class CustomerService implements BaseService {
 		return new CustomerDto(response.body);
 	}
 
-	async getAll() {
+	async getAll(searchParams?: CustomerSearchParams) {
+		let finalUrl = this.basePath;
+
+		if (searchParams) {
+			const { limit, metadata, ...compatibleParams } = searchParams;
+			const queryParams = new URLSearchParams(compatibleParams);
+
+			if (typeof limit !== "undefined" && limit > 0) {
+				queryParams.append("limit", limit.toString());
+			}
+
+			if (typeof metadata !== "undefined") {
+				for (const key in metadata) {
+					queryParams.append(`metadata[${key}]`, metadata[key]);
+				}
+			}
+
+			finalUrl += `?${queryParams.toString()}`;
+		}
+
 		const response = await this.client.send("get", this.basePath);
 		return response.body.data.map(
 			(customer: CustomerResource) => new CustomerDto(customer),

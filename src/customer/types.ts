@@ -24,3 +24,12 @@ export type CreateCustomerPayload = {
 export type UpdateCustomerPayload = Partial<CreateCustomerPayload> & {
 	id: string;
 };
+
+export type CustomerSearchParams = {
+	limit?: number;
+	before?: string;
+	after?: string;
+	email?: string;
+	name?: string;
+	metadata?: Record<string, string>;
+};
