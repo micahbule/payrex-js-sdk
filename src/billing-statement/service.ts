@@ -31,4 +31,33 @@ export default class BillingStatementService implements BaseService {
 		);
 		return new BillingStatementDto(response.body);
 	}
+
+	async getById(id: string) {
+		const response = await this.client.send("get", `${this.basePath}/${id}`);
+		return new BillingStatementDto(response.body);
+	}
+
+	async getAll() {
+		/** TO-DO: Implement getAll */
+	}
+
+	async delete(id: string) {
+		const response = await this.client.send("delete", `${this.basePath}/${id}`);
+		return new BillingStatementDto(response.body);
+	}
+
+	perform(action: string) {
+		return async (id: string) => {
+			const response = await this.client.send(
+				"post",
+				`${this.basePath}/${id}/${action}`,
+			);
+			return new BillingStatementDto(response.body);
+		};
+	}
+
+	finalize = this.perform("finalize");
+	markUncollectible = this.perform("mark_uncollectible");
+	void = this.perform("void");
+	send = this.perform("send");
 }

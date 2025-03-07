@@ -12,10 +12,11 @@ export type CreateBillingStatementPayload = {
 	metadata?: Record<string, string>;
 };
 
-export type UpdateBillingStatementPayload =
-	Partial<CreateBillingStatementPayload> & {
-		id: string;
-	};
+export type UpdateBillingStatementPayload = Partial<
+	Omit<CreateBillingStatementPayload, "billing_details_collection">
+> & {
+	id: string;
+};
 
 export type BillingStatementResource = {
 	id: string;
