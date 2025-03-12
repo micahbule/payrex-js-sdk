@@ -41,3 +41,9 @@ export type BillingStatementResource = {
 	created_at: number;
 	updated_at: number;
 };
+
+export type BillingStatementSearchParams = {
+	limit?: number;
+	before?: string;
+	after?: string;
+};

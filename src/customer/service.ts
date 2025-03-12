@@ -54,7 +54,7 @@ export default class CustomerService implements BaseService {
 			finalUrl += `?${queryParams.toString()}`;
 		}
 
-		const response = await this.client.send("get", this.basePath);
+		const response = await this.client.send("get", finalUrl);
 		return response.body.data.map(
 			(customer: CustomerResource) => new CustomerDto(customer),
 		);
