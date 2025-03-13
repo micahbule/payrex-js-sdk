@@ -46,6 +46,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build
+      - name: Publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
         run: |
