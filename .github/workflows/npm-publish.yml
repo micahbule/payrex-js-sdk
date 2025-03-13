@@ -42,12 +42,6 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 10
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-          registry-url: https://registry.npmjs.org/
       - name: Download build
         uses: actions/download-artifact@v4
         with:
