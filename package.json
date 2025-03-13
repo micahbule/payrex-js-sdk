@@ -1,6 +1,6 @@
 {
 	"name": "payrex-js-sdk",
-	"version": "1.4.9",
+	"version": "1.4.10",
 	"description": "A PayRex SDK written for NodeJS",
 	"main": "dist/index.cjs",
 	"types": "dist/index.d.cts",
