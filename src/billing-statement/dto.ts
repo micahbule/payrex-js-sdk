@@ -1,5 +1,6 @@
 import type CustomerDto from "../customer/dto";
 import PaymentIntentDto from "../payment-intent/dto";
+import StatementLineItemDto from "../statement-line-item/dto";
 import type { AvailablePaymentMethods } from "../types";
 import type { BillingStatementResource } from "./types";
 
@@ -11,8 +12,7 @@ export default class BillingStatementDto {
 	customer_id: string;
 	description: string | null;
 	status: string;
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-	line_items: any[]; // Fix typing
+	line_items: StatementLineItemDto[];
 	livemode: boolean;
 	url: string;
 	customer: Pick<CustomerDto, "id" | "name" | "email">;
@@ -34,7 +34,9 @@ export default class BillingStatementDto {
 		this.customer_id = apiResponse.customer_id;
 		this.description = apiResponse.description;
 		this.status = apiResponse.status;
-		this.line_items = apiResponse.line_items;
+		this.line_items = apiResponse.line_items.map(
+			(lineItem) => new StatementLineItemDto(lineItem),
+		);
 		this.livemode = apiResponse.livemode;
 		this.url = apiResponse.url;
 		this.customer = apiResponse.customer;

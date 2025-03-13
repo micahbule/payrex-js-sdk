@@ -1,5 +1,6 @@
 import type { CustomerResource } from "../customer/types";
 import type { PaymentIntentResource } from "../payment-intent/types";
+import type { StatementLineResource } from "../statement-line-item/types";
 import type { AvailablePaymentMethods } from "../types";
 
 export type CreateBillingStatementPayload = {
@@ -26,8 +27,7 @@ export type BillingStatementResource = {
 	customer_id: string;
 	description: string | null;
 	status: string;
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-	line_items: any[]; // Fix typing
+	line_items: StatementLineResource[];
 	livemode: boolean;
 	url: string;
 	customer: Pick<CustomerResource, "id" | "name" | "email">;
