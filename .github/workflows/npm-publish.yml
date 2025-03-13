@@ -46,12 +46,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build
-      - name: Publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
         run: |
-          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
-          echo "registry=https://registry.npmjs.org/" >> ~/.npmrc
-          echo "always-auth=true" >> ~/.npmrc
-          cat ~/.npmrc
+          ls
           pnpm publish --no-git-checks --access public
