@@ -1,11 +1,13 @@
 {
 	"name": "payrex-js-sdk",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"description": "A PayRex SDK written for NodeJS",
 	"main": "dist/index.cjs",
 	"types": "dist/index.d.cts",
 	"type": "module",
-	"files": ["dist/**/*"],
+	"files": [
+		"dist/**/*"
+	],
 	"scripts": {
 		"test": "mocha",
 		"test:spec": "mocha -- --grep",
@@ -16,7 +18,10 @@
 		"type": "git",
 		"url": "git+https://github.com/micahbule/payrex-js-sdk.git"
 	},
-	"keywords": ["payments", "payrex"],
+	"keywords": [
+		"payments",
+		"payrex"
+	],
 	"author": "Micah Andrew Bule",
 	"license": "ISC",
 	"bugs": {
